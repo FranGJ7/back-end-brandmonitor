@@ -1,4 +1,5 @@
 //configurações iniciais
+const { response } = require('express')
 const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
@@ -17,11 +18,46 @@ app.use(express.json())
 
 
 //rotas
+
+app.post('/person', async(req, res)=>{
+      
+    //req.body
+     const {name, email, password, gender} = req.body
+    
+     const person = {
+        name,
+        email,
+        password,
+        gender
+     }
+     
+     //Criando dado no banco
+     try{
+        
+        await Person.create(person)
+        res.status(201).json({message: "Usuário cadastrado com sucesso!"})
+
+     }catch (error){
+        res.status(500).json({error: error})
+     }
+
+
+ } )
+
+
+
+
 app.get('/', (req, res)=>{
 
 
    res.json({message: 'Oi'})
 })
+
+
+
+
+
+
 
 
 
