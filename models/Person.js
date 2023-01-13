@@ -19,7 +19,9 @@ const PersonSchema = new mongoose.Schema({
     gender: {
         type: String,
         enum: ['masculino', 'feminino', 'não informado']
-    }
+    },
+    created_at: { type: Date, default: Date.now },
+    updated_at: { type: Date, default: Date.now },
 })
 
 PersonSchema.pre('save', async function(next) {
