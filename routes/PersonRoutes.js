@@ -44,6 +44,16 @@ router.post('/', async (req, res) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
 //Visualizar usuários
 router.get('/', async (req, res) => {
     try {
